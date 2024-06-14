@@ -1,0 +1,73 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: dialogue
+  datasource:
+    url: jdbc:mysql://localhost:3306/dialogue?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+    username: root
+    password: xxxxxxxx
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    host: localhost
+    port: 6379
+    password:
+  mail:
+    host: smtp.qq.com
+    username: xxxxxxxx@foxmail.com
+    password: xxxxxxxxxx
+    port: 587
+    default-encoding: UTF-8
+    properties:
+      smtp:
+        socketFactoryClass: javax.net.ssl.SSLSocketFactory
+  jpa:
+    open-in-view: false
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+  data:
+    redis:
+      repositories:
+        enabled: false
+    jpa:
+      repositories:
+        enabled: false
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+elasticsearch:
+  open: false
+  clusterName: elasticsearch
+  hosts: 127.0.0.1:9200
+  userName: elastic
+  password: elastic
+  scheme: http
+  connectTimeOut: 1000
+  socketTimeOut: 30000
+  connectionRequestTimeOut: 500
+  maxConnectNum: 100
+  maxConnectNumPerRoute: 100
+
+logging:
+  level:
+    # 开发默认日志输出级别为debug，生产环境时将日志级别提高为info即可
+    root: info
+    # springboot默认日志级别为info
+    org:
+      springframework: info
+    cn.org.dialogue: debug
+  file:
+    # 日志保存路径
+    path: logs
+    # 日志最大容量，超过后新建
+    max-size: 500MB
+    # 日志保存时间为7天
+    max-history: 7
+
+
